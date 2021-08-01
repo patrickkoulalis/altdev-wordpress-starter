@@ -1,0 +1,15 @@
+{
+	"apiVersion": 2,
+	"name": "altblocks/card",
+	"version": "0.1.0",
+	"title": "ALTblocks Card",
+	"category": "design",
+	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "alt-blocks",
+	"editorScript": "file:../../build/card.js",
+	"editorStyle": "file:../../build/card.css",
+	"style": "file:../../build/style-card.css"
+}

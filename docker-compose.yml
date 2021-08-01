@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: altdev1184125
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: altdev
+      MYSQL_PASSWORD: altdev1184125
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - wordpress
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8300:8080
+    networks:
+      - wordpress
+
+  wordpress:
+    depends_on:
+      - mysql
+    image: wordpress:latest
+    ports:
+      - 8301:80
+    volumes: ['./html:/var/www/html']
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_PASSWORD: altdev1184125
+      WORDPRESS_DB_USER: altdev
+      WORDPRESS_DEBUG: 'TRUE'
+    networks:
+      - wordpress
+
+networks:
+  wordpress:
+volumes:
+  db_data:

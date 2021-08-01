@@ -1,0 +1,37 @@
+{
+	"apiVersion": 2,
+	"name": "altblocks/section",
+	"version": "0.1.0",
+	"title": "ALTblocks Section",
+	"category": "design",
+	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"supports": {
+		"anchor": true,
+		"html": false,
+		"spacing": {
+			"padding": true
+		}
+	},
+	"textdomain": "alt-blocks",
+	"attributes": {
+		"fullWidth": {
+			"type": "boolean",
+			"default": false
+		},
+		"maxWidth": {
+			"type": "string"
+		},
+		"backgroundColor": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"linkColor": {
+			"type": "string"
+		}
+	},
+	"editorScript": "file:../../build/section.js",
+	"editorStyle": "file:../../build/section.css",
+	"style": "file:../../build/style-section.css"
+}

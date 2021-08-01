@@ -1,0 +1,90 @@
+{
+	"apiVersion": 2,
+	"name": "altblocks/grid",
+	"version": "0.1.0",
+	"title": "ALTblocks Grid",
+	"category": "design",
+	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"supports": {
+		"anchor": true,
+		"html": false,
+		"spacing": {
+			"padding": true
+		}
+	},
+	"attributes": {
+		"breakpoints": {
+			"type": "object",
+			"default": {
+				"mobile": {
+					"name": "Mobile",
+					"width": "425px",
+					"gridGap": "",
+					"columns": 1,
+					"rows": "auto",
+					"gridTemplateAreas": "",
+					"gridTemplateColumns": "",
+					"gridTemplateRows": "",
+					"autoFill": false,
+					"autoFit": false
+				},
+				"tablet": {
+					"name": "Tablet",
+					"width": "1024px",
+					"gridGap": "",
+					"columns": 1,
+					"rows": "auto",
+					"gridTemplateAreas": "",
+					"gridTemplateColumns": "",
+					"gridTemplateRows": "",
+					"autoFill": false,
+					"autoFit": false
+				},
+				"desktop": {
+					"name": "Desktop",
+					"width": "1280px",
+					"gridGap": "",
+					"columns": 2,
+					"rows": "auto",
+					"gridTemplateAreas": "",
+					"gridTemplateColumns": "",
+					"gridTemplateRows": "",
+					"autoFill": false,
+					"autoFit": false
+				}
+			}
+		},
+		"gridGap": {
+			"type": "string"
+		},
+		"columns": {
+			"type": "number",
+			"default": 2
+		},
+		"rows": {
+			"type": "string",
+			"default": "auto"
+		},
+		"gridTemplateAreas": {
+			"type": "string"
+		},
+		"gridTemplateColumns": {
+			"type": "string"
+		},
+		"gridTemplateRows": {
+			"type": "string"
+		},
+		"autoFill": {
+			"type": "boolen",
+			"default": false
+		},
+		"autoFit": {
+			"type": "boolen",
+			"default": false
+		}
+	},
+	"textdomain": "alt-blocks",
+	"editorScript": "file:../../build/grid.js",
+	"editorStyle": "file:../../build/grid.css",
+	"style": "file:../../build/style-grid.css"
+}

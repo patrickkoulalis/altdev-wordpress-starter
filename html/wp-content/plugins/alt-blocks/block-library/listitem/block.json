@@ -1,0 +1,25 @@
+{
+	"apiVersion": 2,
+	"name": "altblocks/listitem",
+	"version": "0.1.0",
+	"title": "ALTblocks List Item",
+	"parent": ["altblocks/list"],
+	"category": "widget",
+	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"iconTest": {
+			"type": "string",
+			"selector": ".icon"
+		},
+		"text": {
+			"type": "string"
+		}
+	},
+	"textdomain": "alt-blocks",
+	"editorScript": "file:../../build/listitem.js",
+	"editorStyle": "file:../../build/listitem.css",
+	"style": "file:../../build/style-listitem.css"
+}

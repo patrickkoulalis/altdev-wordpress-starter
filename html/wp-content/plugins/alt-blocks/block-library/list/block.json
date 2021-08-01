@@ -1,0 +1,15 @@
+{
+	"apiVersion": 2,
+	"name": "altblocks/list",
+	"version": "0.1.0",
+	"title": "ALTblocks List",
+	"category": "widget",
+	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "alt-blocks",
+	"editorScript": "file:../../build/list.js",
+	"editorStyle": "file:../../build/list.css",
+	"style": "file:../../build/style-list.css"
+}

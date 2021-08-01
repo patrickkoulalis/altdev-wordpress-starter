@@ -1,0 +1,24 @@
+{
+	"apiVersion": 2,
+	"name": "altblocks/box",
+	"version": "0.1.0",
+	"title": "ALTblocks Box",
+	"category": "design",
+	"description": "This block acts as a div",
+	"supports": {
+		"anchor": true,
+		"html": false,
+		"spacing": {
+			"padding": true
+		},
+		"color": {
+			"gradients": true,
+			"link": true
+		}
+	},
+	"textdomain": "alt-blocks",
+	"attributes": {},
+	"editorScript": "file:../../build/box.js",
+	"editorStyle": "file:../../build/box.css",
+	"style": "file:../../build/style-box.css"
+}

@@ -1,0 +1,25 @@
+* {
+	box-sizing: border-box;
+}
+
+::before,
+::after {
+	box-sizing: inherit;
+}
+
+.block-label {
+	display: block;
+	max-width: 25ch;
+	font-size: 75%;
+	top: 0;
+	left: 0;
+	position: relative;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+body.post-type-page .editor-styles-wrapper .wp-block {
+	width: 100%;
+	max-width: 100vw;
+}

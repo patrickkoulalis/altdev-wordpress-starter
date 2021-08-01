@@ -1,0 +1,35 @@
+{
+	"apiVersion": 2,
+	"name": "altblocks/column",
+	"version": "0.1.0",
+	"title": "ALTblocks Column",
+	"parent": ["altblocks/grid"],
+	"category": "design",
+	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"supports": {
+		"anchor": true,
+		"html": false,
+		"spacing": {
+			"padding": true
+		},
+		"color": {
+			"gradients": true,
+			"link": true
+		}
+	},
+	"textdomain": "alt-blocks",
+	"attributes": {
+		"gridArea": {
+			"type": "string"
+		},
+		"alignContent": {
+			"type": "string"
+		},
+		"alignColumn": {
+			"type": "string"
+		}
+	},
+	"editorScript": "file:../../build/column.js",
+	"editorStyle": "file:../../build/column.css",
+	"style": "file:../../build/style-column.css"
+}
