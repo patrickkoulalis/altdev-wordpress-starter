@@ -12,7 +12,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 	return (
 		<>
-			<div {...useBlockProps()} style={STYLES}>
+			<div {...useBlockProps()}>
 				{editorLabel(useBlockProps)}
 				<InnerBlocks />
 			</div>

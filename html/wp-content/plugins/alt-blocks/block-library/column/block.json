@@ -8,10 +8,8 @@
 	"description": "Example block written with ESNext standard and JSX support – build step required.",
 	"supports": {
 		"anchor": true,
-		"html": false,
-		"spacing": {
-			"padding": true
-		},
+		"className": true,
+		"html": true,
 		"color": {
 			"gradients": true,
 			"link": true
@@ -19,6 +17,103 @@
 	},
 	"textdomain": "alt-blocks",
 	"attributes": {
+		"id": {
+			"type": "string"
+		},
+		"generatedStyles": {
+			"type": "string",
+			"source": "text",
+			"selector": "style"
+		},
+		"breakpoints": {
+			"type": "object",
+			"default": {
+				"desktop": {
+					"name": "Desktop",
+					"icon": "desktop",
+					"width": "1440px",
+					"gridArea": "",
+					"alignContent": "",
+					"alignColumn": "",
+					"order": "",
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					}
+				},
+				"laptop": {
+					"name": "Laptop",
+					"icon": "laptop",
+					"width": "1280px",
+					"gridArea": "",
+					"alignContent": "",
+					"alignColumn": "",
+					"order": "",
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					}
+				},
+				"tablet": {
+					"name": "Tablet",
+					"icon": "tablet",
+					"width": "1024px",
+					"gridArea": "",
+					"alignContent": "",
+					"alignColumn": "",
+					"order": "",
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					}
+				},
+				"mobile": {
+					"name": "Mobile",
+					"icon": "smartphone",
+					"width": "425px",
+					"gridArea": "",
+					"alignContent": "",
+					"alignColumn": "",
+					"order": "",
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					}
+				}
+			}
+		},
 		"gridArea": {
 			"type": "string"
 		},
@@ -27,6 +122,9 @@
 		},
 		"alignColumn": {
 			"type": "string"
+		},
+		"order": {
+			"type": "number"
 		}
 	},
 	"editorScript": "file:../../build/column.js",

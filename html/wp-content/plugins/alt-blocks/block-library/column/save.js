@@ -12,6 +12,7 @@ import { __ } from "@wordpress/i18n";
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
 import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
+import classnames from "classnames";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -23,16 +24,14 @@ import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
  * @return {WPElement} Element to render.
  */
 export default function save({ attributes }) {
-	const { alignColumn, alignContent } = attributes;
-	const PADDING = attributes.style?.spacing?.padding;
-	const STYLE = {
-		padding: PADDING,
-		alignSelf: alignColumn,
-		justifyContent: alignContent,
-	};
+	const { id, generatedStyles } = attributes;
+	const blockClass = `block-${id}`;
 	return (
-		<div {...useBlockProps.save()} style={STYLE}>
-			<InnerBlocks.Content />
-		</div>
+		<>
+			<div {...useBlockProps.save({ className: classnames(blockClass) })}>
+				<style>{generatedStyles}</style>
+				<InnerBlocks.Content />
+			</div>
+		</>
 	);
 }

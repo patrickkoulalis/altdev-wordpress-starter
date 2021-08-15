@@ -7,9 +7,14 @@
 	"description": "Example block written with ESNext standard and JSX support – build step required.",
 	"supports": {
 		"anchor": true,
-		"html": false,
+		"className": true,
+		"html": true,
 		"spacing": {
 			"padding": true
+		},
+		"color": {
+			"background": true,
+			"gradients": true
 		}
 	},
 	"textdomain": "alt-blocks",
@@ -19,15 +24,6 @@
 			"default": false
 		},
 		"maxWidth": {
-			"type": "string"
-		},
-		"backgroundColor": {
-			"type": "string"
-		},
-		"textColor": {
-			"type": "string"
-		},
-		"linkColor": {
 			"type": "string"
 		}
 	},

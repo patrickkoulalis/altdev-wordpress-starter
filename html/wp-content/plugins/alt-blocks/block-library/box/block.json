@@ -7,7 +7,7 @@
 	"description": "This block acts as a div",
 	"supports": {
 		"anchor": true,
-		"html": false,
+		"html": true,
 		"spacing": {
 			"padding": true
 		},
@@ -17,7 +17,93 @@
 		}
 	},
 	"textdomain": "alt-blocks",
-	"attributes": {},
+	"attributes": {
+		"breakpoints": {
+			"type": "object",
+			"default": {
+				"desktop": {
+					"name": "Desktop",
+					"icon": "desktop",
+					"width": "1440px",
+					"alignContent": "",
+					"alignColumn": "",
+					"order": "",
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					}
+				},
+				"laptop": {
+					"name": "Laptop",
+					"icon": "laptop",
+					"width": "1280px",
+					"alignContent": "",
+					"alignColumn": "",
+					"order": "",
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					}
+				},
+				"tablet": {
+					"name": "Tablet",
+					"icon": "tablet",
+					"width": "1024px",
+					"alignContent": "",
+					"alignColumn": "",
+					"order": "",
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					}
+				},
+				"mobile": {
+					"name": "Mobile",
+					"icon": "smartphone",
+					"width": "425px",
+					"alignContent": "",
+					"alignColumn": "",
+					"order": "",
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					}
+				}
+			}
+		}
+	},
 	"editorScript": "file:../../build/box.js",
 	"editorStyle": "file:../../build/box.css",
 	"style": "file:../../build/style-box.css"

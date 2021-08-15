@@ -23,46 +23,16 @@ import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
  * @return {WPElement} Element to render.
  */
 export default function save({ attributes, clientId }) {
-	const {
-		style,
-		gridTemplateAreas,
-		gridTemplateColumns,
-		gridTemplateRows,
-		autoFill,
-		autoFit,
-		columns,
-		gridGap,
-		breakpoints,
-	} = attributes;
-	const PADDING = style?.spacing?.padding;
-	const STYLES = {
-		padding: PADDING,
-	};
-
-	function injectStyles(breakpoints) {
-		let styles = ``;
-		Object.keys(breakpoints).forEach((key) => {
-			styles += `
-				@media(min-width: ${breakpoints[key].width}) {
-					#block-${clientId} {
-						grid-template-columns: ${
-							breakpoints[key].gridTemplateColumns ||
-							`repeat(${breakpoints[key].columns}, 1fr)`
-						};
-						grid-template-rows: ${breakpoints[key].gridTemplateRows || "auto"};
-						grid-gap: ${breakpoints[key].gridGap};
-						grid-template-areas: ${breakpoints[key].gridTemplateAreas};
-					}
-				}
-			`;
-		});
-		return styles;
-	}
+	const { breakpoints, generatedStyles } = attributes;
 
 	return (
 		<>
-			<style>{injectStyles(breakpoints)}</style>
-			<div {...useBlockProps.save()} style={STYLES}>
+			<div
+				{...useBlockProps.save({
+					className: `block-${attributes.id}`,
+				})}
+			>
+				<style>{generatedStyles}</style>
 				<InnerBlocks.Content />
 			</div>
 		</>

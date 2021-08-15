@@ -39,31 +39,4 @@ add_action('wp_enqueue_scripts', 'alt_blocks_enqueue_frontend_scripts');
 function alt_blocks_enqueue_editor_scripts() {
 	wp_enqueue_style( 'alt-blocks-css', plugin_dir_url(__FILE__).'assets/css/alt-blocks-editor.css', array(), date("His.", filesize(__DIR__.'/assets/css/alt-blocks-editor.css')), false);
 }
-add_action('admin_enqueue_scripts', 'alt_blocks_enqueue_editor_scripts');
-
-// function mytheme_setup_theme_supported_features() {
-// 	add_theme_support( 'editor-color-palette', array(
-// 			array(
-// 					'name' => esc_attr__( 'strong magenta', 'altdev' ),
-// 					'slug' => 'strong-magenta',
-// 					'color' => '#a156b4',
-// 			),
-// 			array(
-// 					'name' => esc_attr__( 'light grayish magenta', 'altdev' ),
-// 					'slug' => 'light-grayish-magenta',
-// 					'color' => '#d0a5db',
-// 			),
-// 			array(
-// 					'name' => esc_attr__( 'very light gray', 'altdev' ),
-// 					'slug' => 'very-light-gray',
-// 					'color' => '#eee',
-// 			),
-// 			array(
-// 					'name' => esc_attr__( 'very dark gray', 'altdev' ),
-// 					'slug' => 'very-dark-gray',
-// 					'color' => '#444',
-// 			),
-// 	) );
-// }
-
-// add_action( 'after_setup_theme', 'mytheme_setup_theme_supported_features' );
+add_action('enqueue_block_editor_assets', 'alt_blocks_enqueue_editor_scripts');

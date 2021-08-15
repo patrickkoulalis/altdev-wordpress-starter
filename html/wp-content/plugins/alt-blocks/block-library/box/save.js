@@ -29,7 +29,7 @@ export default function save({ attributes }) {
 	};
 
 	return (
-		<div {...useBlockProps.save()} style={STYLES}>
+		<div {...useBlockProps.save()}>
 			<InnerBlocks.Content />
 		</div>
 	);

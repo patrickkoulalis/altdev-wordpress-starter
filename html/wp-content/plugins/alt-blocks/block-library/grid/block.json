@@ -7,80 +7,129 @@
 	"description": "Example block written with ESNext standard and JSX support – build step required.",
 	"supports": {
 		"anchor": true,
-		"html": false,
-		"spacing": {
-			"padding": true
-		}
+		"html": true
 	},
 	"attributes": {
+		"id": {
+			"type": "string"
+		},
+		"generatedStyles": {
+			"type": "string",
+			"source": "text",
+			"selector": "style"
+		},
 		"breakpoints": {
 			"type": "object",
 			"default": {
-				"mobile": {
-					"name": "Mobile",
-					"width": "425px",
-					"gridGap": "",
-					"columns": 1,
-					"rows": "auto",
-					"gridTemplateAreas": "",
-					"gridTemplateColumns": "",
-					"gridTemplateRows": "",
-					"autoFill": false,
-					"autoFit": false
+				"desktop": {
+					"name": "Desktop",
+					"icon": "desktop",
+					"width": "1440px",
+					"properties": {
+						"gridGap": "",
+						"columns": 2,
+						"rows": "auto",
+						"gridTemplateAreas": "",
+						"gridTemplateColumns": "",
+						"gridTemplateRows": "",
+						"autoFill": false,
+						"autoFit": false,
+						"padding": {
+							"top": "",
+							"left": "",
+							"right": "",
+							"bottom": ""
+						},
+						"margin": {
+							"top": "",
+							"left": "",
+							"right": "",
+							"bottom": ""
+						}
+					}
+				},
+				"laptop": {
+					"name": "Laptop",
+					"icon": "laptop",
+					"width": "1280px",
+					"properties": {
+						"gridGap": "",
+						"columns": 0,
+						"rows": "auto",
+						"gridTemplateAreas": "",
+						"gridTemplateColumns": "",
+						"gridTemplateRows": "",
+						"autoFill": false,
+						"autoFit": false,
+						"padding": {
+							"top": "",
+							"left": "",
+							"right": "",
+							"bottom": ""
+						},
+						"margin": {
+							"top": "",
+							"left": "",
+							"right": "",
+							"bottom": ""
+						}
+					}
 				},
 				"tablet": {
 					"name": "Tablet",
+					"icon": "tablet",
 					"width": "1024px",
-					"gridGap": "",
-					"columns": 1,
-					"rows": "auto",
-					"gridTemplateAreas": "",
-					"gridTemplateColumns": "",
-					"gridTemplateRows": "",
-					"autoFill": false,
-					"autoFit": false
+					"properties": {
+						"gridGap": "",
+						"columns": 0,
+						"rows": "auto",
+						"gridTemplateAreas": "",
+						"gridTemplateColumns": "",
+						"gridTemplateRows": "",
+						"autoFill": false,
+						"autoFit": false,
+						"padding": {
+							"top": "",
+							"left": "",
+							"right": "",
+							"bottom": ""
+						},
+						"margin": {
+							"top": "",
+							"left": "",
+							"right": "",
+							"bottom": ""
+						}
+					}
 				},
-				"desktop": {
-					"name": "Desktop",
-					"width": "1280px",
-					"gridGap": "",
-					"columns": 2,
-					"rows": "auto",
-					"gridTemplateAreas": "",
-					"gridTemplateColumns": "",
-					"gridTemplateRows": "",
-					"autoFill": false,
-					"autoFit": false
+				"mobile": {
+					"name": "Mobile",
+					"icon": "smartphone",
+					"width": "425px",
+					"properties": {
+						"gridGap": "",
+						"columns": 0,
+						"rows": "auto",
+						"gridTemplateAreas": "",
+						"gridTemplateColumns": "",
+						"gridTemplateRows": "",
+						"autoFill": false,
+						"autoFit": false,
+						"padding": {
+							"top": "",
+							"left": "",
+							"right": "",
+							"bottom": ""
+						},
+						"margin": {
+							"top": "",
+							"left": "",
+							"right": "",
+							"bottom": ""
+						}
+					}
 				}
 			}
-		},
-		"gridGap": {
-			"type": "string"
-		},
-		"columns": {
-			"type": "number",
-			"default": 2
-		},
-		"rows": {
-			"type": "string",
-			"default": "auto"
-		},
-		"gridTemplateAreas": {
-			"type": "string"
-		},
-		"gridTemplateColumns": {
-			"type": "string"
-		},
-		"gridTemplateRows": {
-			"type": "string"
-		},
-		"autoFill": {
-			"type": "boolen",
-			"default": false
-		},
-		"autoFit": {
-			"type": "boolen",
-			"default": false
 		}
 	},
 	"textdomain": "alt-blocks",

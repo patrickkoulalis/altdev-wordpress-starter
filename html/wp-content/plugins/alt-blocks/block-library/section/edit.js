@@ -15,56 +15,42 @@ import {
 } from "@wordpress/components";
 import { useState } from "@wordpress/element";
 import { more } from "@wordpress/icons";
+import classnames from "classnames";
 import "./editor.scss";
 import editorLabel from "../../@lib/editorLabel";
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit({
+	attributes,
+	setAttributes,
+	className,
+	clientId,
+}) {
 	const [isFullWidth, setIsFullWidth] = useState(attributes.fullWidth);
 	const [maxWidth, setMaxWidth] = useState(attributes.maxWidth);
-	const [backgroundColor, setBackgroundColor] = useState(
-		attributes.backgroundColor
-	);
+	const { backgroundColor } = attributes;
 	setAttributes({
 		fullWidth: isFullWidth,
 		maxWidth,
-		backgroundColor,
 	});
+
 	const PADDING = attributes.style?.spacing?.padding;
-	const BACKGROUND_COLOR = backgroundColor;
 	const TEXT_COLOR = "";
 	const LINK_COLOR = "";
 	const SECTION_STYLES = {
-		backgroundColor: BACKGROUND_COLOR,
+		backgroundColor: "",
 		padding: `${PADDING?.top} ${PADDING?.right} ${PADDING?.bottom} ${PADDING?.left}`,
 	};
 	const CONTAINER_STYLES = {
 		maxWidth: attributes.maxWidth || "1440px",
 		margin: "0 auto",
 	};
-
-	function AltColorPalette() {
-		const colors = [
-			{ name: "alt-blue", color: "#1e42c8" },
-			{ name: "alt-dark-blue", color: "#04091b" },
-			{ name: "alt-purple", color: "#5539ac" },
-			{ name: "alt-dark-purple", color: "#1a0c44" },
-			{ name: "white", color: "#fff" },
-			{ name: "black", color: "#000" },
-			{ name: "primary-red", color: "#f00" },
-			{ name: "primary-blue", color: "#00f" },
-		];
-
-		return (
-			<ColorPalette
-				colors={colors}
-				value={backgroundColor}
-				onChange={(backgroundColor) => setBackgroundColor(backgroundColor)}
-			/>
-		);
-	}
+	let BLOCK_CLASS = `block-${clientId}`;
+	const blockProps = useBlockProps({
+		className: classnames(BLOCK_CLASS, className),
+	});
 
 	return (
 		<>
-			<section {...useBlockProps()} style={SECTION_STYLES}>
+			<section {...blockProps} style={SECTION_STYLES}>
 				{editorLabel(useBlockProps)}
 				<InspectorControls key="setting">
 					<Panel>
@@ -101,25 +87,22 @@ export default function Edit({ attributes, setAttributes }) {
 							</PanelRow>
 						</PanelBody>
 					</Panel>
-					<Panel>
+					{/* <Panel>
 						<PanelBody title="Color" icon={more} initialOpen={false}>
-							<PanelRow>
-								<fieldset>
-									<legend className="components-visually-hidden">
-										{__("Background Color", "alt-blocks")}
-									</legend>
-									<label className="components-custom-select-control__label">
-										{__("Background color", "alt-blocks")}
-									</label>
-									{AltColorPalette()}
-								</fieldset>
-							</PanelRow>
+							{ColorPaletteRow(
+								"Background Color",
+								backgroundColor,
+								setAttributes
+							)}
 						</PanelBody>
-					</Panel>
+					</Panel> */}
 				</InspectorControls>
-				<div style={!isFullWidth ? CONTAINER_STYLES : null}>
-					<InnerBlocks />
-				</div>
+				{!attributes.fullWidth && (
+					<div class="container" style={CONTAINER_STYLES}>
+						<InnerBlocks />
+					</div>
+				)}
+				{attributes.fullWidth && <InnerBlocks />}
 			</section>
 		</>
 	);
