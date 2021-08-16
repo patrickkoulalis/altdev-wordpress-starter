@@ -10,7 +10,7 @@ export default function spacingControls(setAttributes, breakpoints, device) {
 			<PanelRow>
 				<BoxControl
 					label="Padding"
-					values={breakpoints[device].properties.padding}
+					values={breakpoints[device].padding}
 					onChange={(values) =>
 						updateBreakpoints(
 							setAttributes,
@@ -25,7 +25,7 @@ export default function spacingControls(setAttributes, breakpoints, device) {
 			<PanelRow>
 				<BoxControl
 					label="Margin"
-					values={breakpoints[device].properties.margin}
+					values={breakpoints[device].margin}
 					onChange={(values) =>
 						updateBreakpoints(
 							setAttributes,

@@ -25,108 +25,96 @@
 					"name": "Desktop",
 					"icon": "desktop",
 					"width": "1440px",
-					"properties": {
-						"gridGap": "",
-						"columns": 2,
-						"rows": "auto",
-						"gridTemplateAreas": "",
-						"gridTemplateColumns": "",
-						"gridTemplateRows": "",
-						"autoFill": false,
-						"autoFit": false,
-						"padding": {
-							"top": "",
-							"left": "",
-							"right": "",
-							"bottom": ""
-						},
-						"margin": {
-							"top": "",
-							"left": "",
-							"right": "",
-							"bottom": ""
-						}
+					"gridGap": "",
+					"columns": 2,
+					"gridTemplateAreas": "",
+					"gridTemplateColumns": "",
+					"gridTemplateRows": "auto",
+					"autoFill": false,
+					"autoFit": false,
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
 					}
 				},
 				"laptop": {
 					"name": "Laptop",
 					"icon": "laptop",
 					"width": "1280px",
-					"properties": {
-						"gridGap": "",
-						"columns": 0,
-						"rows": "auto",
-						"gridTemplateAreas": "",
-						"gridTemplateColumns": "",
-						"gridTemplateRows": "",
-						"autoFill": false,
-						"autoFit": false,
-						"padding": {
-							"top": "",
-							"left": "",
-							"right": "",
-							"bottom": ""
-						},
-						"margin": {
-							"top": "",
-							"left": "",
-							"right": "",
-							"bottom": ""
-						}
+					"gridGap": "",
+					"columns": 0,
+					"gridTemplateAreas": "",
+					"gridTemplateColumns": "",
+					"gridTemplateRows": "",
+					"autoFill": false,
+					"autoFit": false,
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
 					}
 				},
 				"tablet": {
 					"name": "Tablet",
 					"icon": "tablet",
 					"width": "1024px",
-					"properties": {
-						"gridGap": "",
-						"columns": 0,
-						"rows": "auto",
-						"gridTemplateAreas": "",
-						"gridTemplateColumns": "",
-						"gridTemplateRows": "",
-						"autoFill": false,
-						"autoFit": false,
-						"padding": {
-							"top": "",
-							"left": "",
-							"right": "",
-							"bottom": ""
-						},
-						"margin": {
-							"top": "",
-							"left": "",
-							"right": "",
-							"bottom": ""
-						}
+					"gridGap": "",
+					"columns": 0,
+					"gridTemplateAreas": "",
+					"gridTemplateColumns": "",
+					"gridTemplateRows": "",
+					"autoFill": false,
+					"autoFit": false,
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
 					}
 				},
 				"mobile": {
 					"name": "Mobile",
 					"icon": "smartphone",
 					"width": "425px",
-					"properties": {
-						"gridGap": "",
-						"columns": 0,
-						"rows": "auto",
-						"gridTemplateAreas": "",
-						"gridTemplateColumns": "",
-						"gridTemplateRows": "",
-						"autoFill": false,
-						"autoFit": false,
-						"padding": {
-							"top": "",
-							"left": "",
-							"right": "",
-							"bottom": ""
-						},
-						"margin": {
-							"top": "",
-							"left": "",
-							"right": "",
-							"bottom": ""
-						}
+					"gridGap": "",
+					"columns": 0,
+					"gridTemplateAreas": "",
+					"gridTemplateColumns": "",
+					"gridTemplateRows": "",
+					"autoFill": false,
+					"autoFit": false,
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
 					}
 				}
 			}

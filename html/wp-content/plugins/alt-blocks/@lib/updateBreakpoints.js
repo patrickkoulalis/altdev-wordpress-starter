@@ -10,10 +10,7 @@ export default function updateBreakpoints(
 			...breakpoints,
 			[device]: {
 				...breakpoints[device],
-				properties: {
-					...breakpoints[device].properties,
-					[setting]: newValue,
-				},
+				[setting]: newValue,
 			},
 		},
 	});

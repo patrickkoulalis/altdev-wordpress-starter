@@ -263,8 +263,7 @@ th {
 
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.button,
-button {
+.button {
 	display: inline-block;
 	padding: 0.5em 1em;
 	color: var(--bodyTextColor);
@@ -413,151 +412,8 @@ button:focus {
 	text-transform: uppercase;
 }
 
-/* Main Header */
-.top {
-	position: sticky;
-	top: 0;
-	left: 0;
-	z-index: 9999;
-	padding: 1em 0;
-	background: var(--light);
-	box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.02);
-}
-
-.top > .container {
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-	justify-content: space-between;
-}
-
-.logo {
-	width: 150px;
-	height: auto;
-	margin-right: 1em;
-	font-size: 0;
-}
-
-.menu-toggle {
-	padding: 1em 0.5em;
-	outline: 0;
-	cursor: pointer;
-	z-index: 99999;
-}
-.menu-toggle:hover {
-	transform: none;
-}
-
-.hamburger {
-	display: block;
-	position: relative;
-	width: 25px;
-	height: 2px;
-	border-radius: 2px;
-	background: var(--primary);
-}
-
-.hamburger::before,
-.hamburger::after {
-	content: '';
-	display: block;
-	width: 25px;
-	height: 2px;
-	border-radius: 2px;
-	background: var(--primary);
-}
-.hamburger::before {
-	position: absolute;
-	top: -8px;
-	left: 0;
-}
-
-.hamburger::after {
-	position: absolute;
-	bottom: -8px;
-	left: 0;
-}
-
-.nav-main {
-	display: none;
-}
-
-.top [type='checkbox'] {
-	position: absolute;
-	top: 0;
-	right: 0;
-	opacity: 0;
-	z-index: -1;
-}
-
-.top [type='checkbox']:checked ~ .nav-main {
-	display: flex;
-	position: fixed;
-	width: 50%;
-	min-height: 100%;
-	background: white;
-	top: var(--header-height);
-	right: 0;
-	bottom: 0;
-}
-
-.nav-main > ul {
-	display: flex;
-	flex-direction: column;
-	gap: 2em;
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-
-/* polyfill gap in flex for safari */
-@supports not (text-align-last: right) {
-	.nav-main > ul > li {
-		margin: 1em 0;
-	}
-}
-
-@media (min-width: 45em) {
-	.menu-toggle {
-		display: none;
-	}
-
-	.nav-main {
-		display: flex;
-		align-items: center;
-	}
-
-	.nav-main > ul {
-		flex-direction: row;
-	}
-	/* polyfill gap in flex for safari */
-	@supports not (text-align-last: right) {
-		.nav-main > ul > li {
-			margin: 0 1em;
-		}
-	}
-
-	.nav-main > ul > li {
-		position: relative;
-	}
-
-	.nav-main > ul > li > .sub-menu {
-		display: none;
-	}
-
-	.nav-main > ul > li a:hover + .sub-menu {
-		display: block;
-		position: absolute;
-		top: 2em;
-		left: 50%;
-		min-width: 250px;
-		transform: translate(-50%, 0);
-		border: 1px solid red;
-	}
-}
-
 /* Form / Inputs */
-form {
+/* form {
 	margin-bottom: 1em;
 }
 fieldset {
@@ -589,7 +445,7 @@ label + input:not(:first-of-type),
 .input-group + .input-group,
 .input-group + input:not(:first-of-type) {
 	margin-top: 1em;
-}
+} */
 
 #masthead,
 .masthead {

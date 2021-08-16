@@ -26,7 +26,6 @@ import getBlockChildren from "../../@lib/getBlockChildren";
 import getBlockInfo from "../../@lib/getBlockInfo";
 import injectStyles from "../../@lib/injectStyles";
 import updateBreakpoints from "../../@lib/updateBreakpoints";
-import updateBreakpointsMeta from "../../@lib/updateBreakpointsMeta";
 import spacingControls from "../../@lib/spacingControls";
 import BREAKPOINT_TABS from "../../@lib/breakpointTabs";
 
@@ -51,7 +50,9 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 	// 	});
 	// }, [gridTemplateAreas]);
 
-	setAttributes({ generatedStyles: injectStyles(id, breakpoints) });
+	setAttributes({
+		generatedStyles: injectStyles(id, breakpoints),
+	});
 
 	const blockProps = useBlockProps({
 		className: `block-${id}`,
@@ -66,143 +67,149 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 	return (
 		<>
 			{editorLabel(useBlockProps)}
-			<InspectorControls key="grid-settings">
-				<Panel>
-					<PanelBody title="Spacing" icon={more} initialOpen={false}>
-						<TabPanel
-							className="my-tab-panel"
-							activeClass="active-tab"
-							tabs={BREAKPOINT_TABS(breakpoints)}
-							initialTabName="desktop"
-						>
-							{(tab) => {
-								const desktopControls = new spacingControls(
-									setAttributes,
-									breakpoints,
-									"desktop"
-								);
-								const laptopControls = new spacingControls(
-									setAttributes,
-									breakpoints,
-									"laptop"
-								);
-								const tabletControls = new spacingControls(
-									setAttributes,
-									breakpoints,
-									"tablet"
-								);
-								const mobileControls = new spacingControls(
-									setAttributes,
-									breakpoints,
-									"mobile"
-								);
-								if (tab.name == "desktop") {
-									return desktopControls;
-								} else if (tab.name == "laptop") {
-									return laptopControls;
-								} else if (tab.name == "tablet") {
-									return tabletControls;
-								} else if (tab.name == "mobile") {
-									return mobileControls;
-								}
-							}}
-						</TabPanel>
-					</PanelBody>
-				</Panel>
-				<Panel>
-					<PanelBody title="Grid Settings" icon={more} initialOpen={false}>
-						<TabPanel
-							className="my-tab-panel"
-							activeClass="active-tab"
-							tabs={BREAKPOINT_TABS(breakpoints)}
-							initialTabName="desktop"
-						>
-							{(tab) => {
-								const desktopControls = gridControls(
-									setAttributes,
-									breakpoints,
-									"desktop"
-								);
-								const laptopControls = gridControls(
-									setAttributes,
-									breakpoints,
-									"laptop"
-								);
-								const tabletControls = gridControls(
-									setAttributes,
-									breakpoints,
-									"tablet"
-								);
-								const mobileControls = gridControls(
-									setAttributes,
-									breakpoints,
-									"mobile"
-								);
-								if (tab.name == "desktop") {
-									return desktopControls;
-								} else if (tab.name == "laptop") {
-									return laptopControls;
-								} else if (tab.name == "tablet") {
-									return tabletControls;
-								} else if (tab.name == "mobile") {
-									return mobileControls;
-								}
-							}}
-						</TabPanel>
-					</PanelBody>
-				</Panel>
-				<Panel>
-					<PanelBody title="Breakpoints" icon={more} initialOpen={false}>
-						<PanelRow>
-							<TextControl
-								label="Laptop"
-								value={breakpoints.desktop.width}
-								help="Default: 1280px"
-								onChange={(value) =>
-									updateBreakpointsMeta(
-										setAttributes,
-										breakpoints,
-										"laptop",
-										"width",
-										value
-									)
-								}
-							/>
-							<TextControl
-								label="Tablet"
-								value={breakpoints.tablet.width}
-								help="Default: 1024px"
-								onChange={(value) =>
-									updateBreakpointsMeta(
-										setAttributes,
-										breakpoints,
-										"tablet",
-										"width",
-										value
-									)
-								}
-							/>
-							<TextControl
-								label="Mobile"
-								value={breakpoints.mobile.width}
-								help="Default: 425px"
-								onChange={(value) =>
-									updateBreakpointsMeta(
-										setAttributes,
-										breakpoints,
-										"mobile",
-										"width",
-										value
-									)
-								}
-							/>
-						</PanelRow>
-					</PanelBody>
-				</Panel>
-			</InspectorControls>
+			{inspectorControls(breakpoints, setAttributes)}
 			<style>{generatedStyles}</style>
 			<div {...innerBlocksProps} />
 		</>
+	);
+}
+
+function inspectorControls(breakpoints, setAttributes) {
+	return (
+		<InspectorControls key="grid-settings">
+			<Panel>
+				<PanelBody title="Spacing" icon={more} initialOpen={false}>
+					<TabPanel
+						className="my-tab-panel"
+						activeClass="active-tab"
+						tabs={BREAKPOINT_TABS(breakpoints)}
+						initialTabName="desktop"
+					>
+						{(tab) => {
+							const desktopControls = new spacingControls(
+								setAttributes,
+								breakpoints,
+								"desktop"
+							);
+							const laptopControls = new spacingControls(
+								setAttributes,
+								breakpoints,
+								"laptop"
+							);
+							const tabletControls = new spacingControls(
+								setAttributes,
+								breakpoints,
+								"tablet"
+							);
+							const mobileControls = new spacingControls(
+								setAttributes,
+								breakpoints,
+								"mobile"
+							);
+							if (tab.name == "desktop") {
+								return desktopControls;
+							} else if (tab.name == "laptop") {
+								return laptopControls;
+							} else if (tab.name == "tablet") {
+								return tabletControls;
+							} else if (tab.name == "mobile") {
+								return mobileControls;
+							}
+						}}
+					</TabPanel>
+				</PanelBody>
+			</Panel>
+			<Panel>
+				<PanelBody title="Grid Settings" icon={more} initialOpen={false}>
+					<TabPanel
+						className="my-tab-panel"
+						activeClass="active-tab"
+						tabs={BREAKPOINT_TABS(breakpoints)}
+						initialTabName="desktop"
+					>
+						{(tab) => {
+							const desktopControls = new gridControls(
+								setAttributes,
+								breakpoints,
+								"desktop"
+							);
+							const laptopControls = new gridControls(
+								setAttributes,
+								breakpoints,
+								"laptop"
+							);
+							const tabletControls = new gridControls(
+								setAttributes,
+								breakpoints,
+								"tablet"
+							);
+							const mobileControls = new gridControls(
+								setAttributes,
+								breakpoints,
+								"mobile"
+							);
+							if (tab.name == "desktop") {
+								return desktopControls;
+							} else if (tab.name == "laptop") {
+								return laptopControls;
+							} else if (tab.name == "tablet") {
+								return tabletControls;
+							} else if (tab.name == "mobile") {
+								return mobileControls;
+							}
+						}}
+					</TabPanel>
+				</PanelBody>
+			</Panel>
+			<Panel>
+				<PanelBody title="Breakpoints" icon={more} initialOpen={false}>
+					<PanelRow>
+						<TextControl
+							label="Laptop"
+							value={breakpoints.desktop.width}
+							help="Default: 1280px"
+							onChange={(value) =>
+								updateBreakpoints(
+									setAttributes,
+									breakpoints,
+									"laptop",
+									"width",
+									value
+								)
+							}
+						/>
+						<TextControl
+							label="Tablet"
+							value={breakpoints.tablet.width}
+							help="Default: 1024px"
+							onChange={(value) =>
+								updateBreakpoints(
+									setAttributes,
+									breakpoints,
+									"tablet",
+									"width",
+									value
+								)
+							}
+						/>
+						<TextControl
+							label="Mobile"
+							value={breakpoints.mobile.width}
+							help="Default: 425px"
+							onChange={(value) =>
+								updateBreakpoints(
+									setAttributes,
+									breakpoints,
+									"mobile",
+									"width",
+									value
+								)
+							}
+						/>
+					</PanelRow>
+				</PanelBody>
+			</Panel>
+		</InspectorControls>
 	);
 }
 
@@ -212,7 +219,7 @@ function gridControls(setAttributes, breakpoints, device) {
 			<PanelRow>
 				<RangeControl
 					label="Columns"
-					value={breakpoints[device].properties.columns}
+					value={breakpoints[device].columns}
 					onChange={(value) =>
 						updateBreakpoints(
 							setAttributes,
@@ -229,7 +236,7 @@ function gridControls(setAttributes, breakpoints, device) {
 			<PanelRow>
 				<TextControl
 					label="Grid Gap"
-					value={breakpoints[device].properties.gridGap}
+					value={breakpoints[device].gridGap}
 					help="Example: 1.5em"
 					onChange={(value) =>
 						updateBreakpoints(
@@ -245,7 +252,7 @@ function gridControls(setAttributes, breakpoints, device) {
 			<PanelRow>
 				<TextControl
 					label="Grid Template Columns"
-					value={breakpoints[device].properties.gridTemplateColumns}
+					value={breakpoints[device].gridTemplateColumns}
 					help="Example: 2fr 100px 10%"
 					onChange={(value) =>
 						updateBreakpoints(
@@ -261,7 +268,7 @@ function gridControls(setAttributes, breakpoints, device) {
 			<PanelRow>
 				<TextControl
 					label="Grid Template Rows"
-					value={breakpoints[device].properties.gridTemplateRows}
+					value={breakpoints[device].gridTemplateRows}
 					help="Example: 2fr 100px 10%"
 					onChange={(value) =>
 						updateBreakpoints(
@@ -277,7 +284,7 @@ function gridControls(setAttributes, breakpoints, device) {
 			<PanelRow>
 				<TextareaControl
 					label="Grid Template Areas"
-					value={breakpoints[device].properties.gridTemplateAreas}
+					value={breakpoints[device].gridTemplateAreas}
 					help='Example: "main main sidebar"'
 					onChange={(value) =>
 						updateBreakpoints(
@@ -293,7 +300,7 @@ function gridControls(setAttributes, breakpoints, device) {
 			<PanelRow>
 				<CheckboxControl
 					label="Auto-Fit"
-					checked={breakpoints[device].properties.autoFit}
+					checked={breakpoints[device].autoFit}
 					onChange={(value) => {
 						updateBreakpoints(
 							setAttributes,
@@ -306,7 +313,7 @@ function gridControls(setAttributes, breakpoints, device) {
 				/>
 				<CheckboxControl
 					label="Auto-Fill"
-					checked={breakpoints[device].properties.autoFill}
+					checked={breakpoints[device].autoFill}
 					onChange={(value) => {
 						updateBreakpoints(
 							setAttributes,

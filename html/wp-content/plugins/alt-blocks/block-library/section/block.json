@@ -9,9 +9,6 @@
 		"anchor": true,
 		"className": true,
 		"html": true,
-		"spacing": {
-			"padding": true
-		},
 		"color": {
 			"background": true,
 			"gradients": true
@@ -19,12 +16,113 @@
 	},
 	"textdomain": "alt-blocks",
 	"attributes": {
+		"id": {
+			"type": "string"
+		},
 		"fullWidth": {
 			"type": "boolean",
 			"default": false
 		},
 		"maxWidth": {
 			"type": "string"
+		},
+		"generatedStyles": {
+			"type": "string",
+			"source": "text",
+			"selector": "style"
+		},
+		"breakpoints": {
+			"type": "object",
+			"default": {
+				"desktop": {
+					"name": "Desktop",
+					"icon": "desktop",
+					"width": "1440px",
+					"fullWidth": false,
+					"maxWidth": "",
+					"backgroundColor": "",
+					"maxHeight": "",
+					"height": "",
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					}
+				},
+				"laptop": {
+					"name": "Laptop",
+					"icon": "laptop",
+					"width": "1280px",
+					"fullWidth": false,
+					"maxWidth": "",
+					"backgroundColor": "",
+					"maxHeight": "",
+					"height": "",
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					}
+				},
+				"tablet": {
+					"name": "Tablet",
+					"icon": "tablet",
+					"width": "1024px",
+					"fullWidth": false,
+					"maxWidth": "",
+					"backgroundColor": "",
+					"maxHeight": "",
+					"height": "",
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					}
+				},
+				"mobile": {
+					"name": "Mobile",
+					"icon": "smartphone",
+					"width": "425px",
+					"fullWidth": false,
+					"maxWidth": "",
+					"backgroundColor": "",
+					"maxHeight": "",
+					"height": "",
+					"padding": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					},
+					"margin": {
+						"top": "",
+						"left": "",
+						"right": "",
+						"bottom": ""
+					}
+				}
+			}
 		}
 	},
 	"editorScript": "file:../../build/section.js",

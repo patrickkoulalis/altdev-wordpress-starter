@@ -9,11 +9,17 @@ define('IMAGES',THEME_URI.'/assets/images');
 define('CSS',THEME_URI.'/assets/css');
 define('JS',THEME_URI.'/assets/javascript');
 define('TEXTDOMAIN','altdev');
-function alt_dev_starter_setup() {
 
+function altdev_enqueue_editor_scripts() {
+	wp_enqueue_style( 'altdev-theme-editor-css', CSS.'/altdev-editor.css', array(), date("His.", filesize(__DIR__.'/assets/css/altdev-editor.css')), false);
+}
+add_action('enqueue_block_editor_assets', 'altdev_enqueue_editor_scripts');
+
+
+function alt_dev_starter_setup() {
+	remove_theme_support( 'core-block-patterns' );
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
-
 	/*
 	 * Let WordPress manage the document title.
 	 * This theme does not use a hard-coded <title> tag in the document head,
@@ -157,24 +163,30 @@ function alt_dev_starter_setup() {
 	);
 
 	// Editor color palette.
-	$black     = '#000000';
-	$dark_gray = '#28303D';
-	$gray      = '#39414D';
-	$green     = '#D1E4DD';
-	$blue      = '#D1DFE4';
-	$purple    = '#D1D1E4';
-	$red       = '#E4D1D1';
-	$orange    = '#E4DAD1';
-	$yellow    = '#EEEADD';
-	$white     = '#FFFFFF';
+	$black      = '#000000';
+	$dark_gray  = '#28303D';
+	$gray       = '#39414D';
+	$lightGray  = '#fbfbfb';
+	$blue       = '#1e42c8';
+	$darkBlue   = '#04091b';
+	$lightBlue  = '#fafaff';
+	$purple     = '#5539ac';
+	$darkPurple = '#1a0c44';
+	$white      = '#FFFFFF';
+	$seafoam    = '#1ec89f';
 
 	add_theme_support(
 		'editor-color-palette',
 		array(
 			array(
-				'name'  => esc_html__( 'Black', 'altdevstarter' ),
+				'name'  => esc_html__( 'Blackkkkkkk', 'altdevstarter' ),
 				'slug'  => 'black',
 				'color' => $black,
+			),
+			array(
+				'name'  => esc_html__( 'White', 'altdevstarter' ),
+				'slug'  => 'white',
+				'color' => $white,
 			),
 			array(
 				'name'  => esc_html__( 'Dark gray', 'altdevstarter' ),
@@ -187,9 +199,9 @@ function alt_dev_starter_setup() {
 				'color' => $gray,
 			),
 			array(
-				'name'  => esc_html__( 'Green', 'altdevstarter' ),
-				'slug'  => 'green',
-				'color' => $green,
+				'name'  => esc_html__( 'Light Gray', 'altdevstarter' ),
+				'slug'  => 'light-gray',
+				'color' => $lightGray,
 			),
 			array(
 				'name'  => esc_html__( 'Blue', 'altdevstarter' ),
@@ -197,29 +209,24 @@ function alt_dev_starter_setup() {
 				'color' => $blue,
 			),
 			array(
+				'name'  => esc_html__( 'Dark Blue', 'altdevstarter' ),
+				'slug'  => 'dark-blue',
+				'color' => $darkBlue,
+			),
+			array(
+				'name'  => esc_html__( 'Light Blue', 'altdevstarter' ),
+				'slug'  => 'light-blue',
+				'color' => $lightBlue,
+			),
+			array(
 				'name'  => esc_html__( 'Purple', 'altdevstarter' ),
 				'slug'  => 'purple',
 				'color' => $purple,
 			),
 			array(
-				'name'  => esc_html__( 'Red', 'altdevstarter' ),
-				'slug'  => 'red',
-				'color' => $red,
-			),
-			array(
-				'name'  => esc_html__( 'Orange', 'altdevstarter' ),
-				'slug'  => 'orange',
-				'color' => $orange,
-			),
-			array(
-				'name'  => esc_html__( 'Yellow', 'altdevstarter' ),
-				'slug'  => 'yellow',
-				'color' => $yellow,
-			),
-			array(
-				'name'  => esc_html__( 'White', 'altdevstarter' ),
-				'slug'  => 'white',
-				'color' => $white,
+				'name'  => esc_html__( 'Purple', 'altdevstarter' ),
+				'slug'  => 'dark-purple',
+				'color' => $darkPurple,
 			),
 		)
 	);
@@ -228,44 +235,9 @@ function alt_dev_starter_setup() {
 		'editor-gradient-presets',
 		array(
 			array(
-				'name'     => esc_html__( 'Purple to yellow', 'altdevstarter' ),
-				'gradient' => 'linear-gradient(160deg, ' . $purple . ' 0%, ' . $yellow . ' 100%)',
-				'slug'     => 'purple-to-yellow',
-			),
-			array(
-				'name'     => esc_html__( 'Yellow to purple', 'altdevstarter' ),
-				'gradient' => 'linear-gradient(160deg, ' . $yellow . ' 0%, ' . $purple . ' 100%)',
-				'slug'     => 'yellow-to-purple',
-			),
-			array(
-				'name'     => esc_html__( 'Green to yellow', 'altdevstarter' ),
-				'gradient' => 'linear-gradient(160deg, ' . $green . ' 0%, ' . $yellow . ' 100%)',
-				'slug'     => 'green-to-yellow',
-			),
-			array(
-				'name'     => esc_html__( 'Yellow to green', 'altdevstarter' ),
-				'gradient' => 'linear-gradient(160deg, ' . $yellow . ' 0%, ' . $green . ' 100%)',
-				'slug'     => 'yellow-to-green',
-			),
-			array(
-				'name'     => esc_html__( 'Red to yellow', 'altdevstarter' ),
-				'gradient' => 'linear-gradient(160deg, ' . $red . ' 0%, ' . $yellow . ' 100%)',
-				'slug'     => 'red-to-yellow',
-			),
-			array(
-				'name'     => esc_html__( 'Yellow to red', 'altdevstarter' ),
-				'gradient' => 'linear-gradient(160deg, ' . $yellow . ' 0%, ' . $red . ' 100%)',
-				'slug'     => 'yellow-to-red',
-			),
-			array(
-				'name'     => esc_html__( 'Purple to red', 'altdevstarter' ),
-				'gradient' => 'linear-gradient(160deg, ' . $purple . ' 0%, ' . $red . ' 100%)',
-				'slug'     => 'purple-to-red',
-			),
-			array(
-				'name'     => esc_html__( 'Red to purple', 'altdevstarter' ),
-				'gradient' => 'linear-gradient(160deg, ' . $red . ' 0%, ' . $purple . ' 100%)',
-				'slug'     => 'red-to-purple',
+				'name'     => esc_html__( 'Purple to blue', 'altdevstarter' ),
+				'gradient' => 'linear-gradient(160deg, ' . $purple . ' 0%, ' . $blue . ' 100%)',
+				'slug'     => 'purple-to-blue',
 			),
 		)
 	);
