@@ -26,6 +26,10 @@
 		"maxWidth": {
 			"type": "string"
 		},
+		"containerClass": {
+			"type": "string",
+			"default": ""
+		},
 		"generatedStyles": {
 			"type": "string",
 			"source": "text",
@@ -38,11 +42,12 @@
 					"name": "Desktop",
 					"icon": "desktop",
 					"width": "1440px",
-					"fullWidth": false,
-					"maxWidth": "",
-					"backgroundColor": "",
 					"maxHeight": "",
 					"height": "",
+					"display": "",
+					"alignContent": "",
+					"justifyContent": "",
+					"flexDirection": "",
 					"padding": {
 						"top": "",
 						"left": "",
@@ -60,9 +65,6 @@
 					"name": "Laptop",
 					"icon": "laptop",
 					"width": "1280px",
-					"fullWidth": false,
-					"maxWidth": "",
-					"backgroundColor": "",
 					"maxHeight": "",
 					"height": "",
 					"padding": {
@@ -82,9 +84,6 @@
 					"name": "Tablet",
 					"icon": "tablet",
 					"width": "1024px",
-					"fullWidth": false,
-					"maxWidth": "",
-					"backgroundColor": "",
 					"maxHeight": "",
 					"height": "",
 					"padding": {
@@ -104,9 +103,6 @@
 					"name": "Mobile",
 					"icon": "smartphone",
 					"width": "425px",
-					"fullWidth": false,
-					"maxWidth": "",
-					"backgroundColor": "",
 					"maxHeight": "",
 					"height": "",
 					"padding": {

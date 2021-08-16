@@ -21,7 +21,7 @@ import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
  * @return {WPElement} Element to render.
  */
 export default function save({ attributes }) {
-	const { generatedStyles } = attributes;
+	const { generatedStyles, fullWidth, maxWidth, containerClass } = attributes;
 
 	return (
 		<section
@@ -30,9 +30,15 @@ export default function save({ attributes }) {
 			})}
 		>
 			<style>{generatedStyles}</style>
-			<div class="container">
-				<InnerBlocks.Content />
-			</div>
+			{!fullWidth && (
+				<div
+					class={`ab-section-inner${containerClass && " " + containerClass}`}
+					style={maxWidth && { maxWidth: maxWidth, margin: "0 auto" }}
+				>
+					<InnerBlocks.Content />
+				</div>
+			)}
+			{fullWidth && <InnerBlocks.Content />}
 		</section>
 	);
 }
