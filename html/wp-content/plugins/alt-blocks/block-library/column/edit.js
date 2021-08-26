@@ -20,7 +20,9 @@ import {
 import { useState, useEffect } from "@wordpress/element";
 import { more } from "@wordpress/icons";
 import "./editor.scss";
+import SpacingControlsPanel from "../../components/SpacingControlsPanel";
 import editorLabel from "../../@lib/editorLabel";
+import injectStyles from "../../@lib/injectStyles";
 import updateBreakpoints from "../../@lib/updateBreakpoints";
 import spacingControls from "../../@lib/spacingControls";
 import BREAKPOINT_TABS from "../../@lib/breakpointTabs";
@@ -52,40 +54,10 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 				{editorLabel(useBlockProps)}
 				<style>{generatedStyles}</style>
 				<InspectorControls key="setting">
-					<Panel>
-						<PanelBody title="Spacing" icon={more} initialOpen={false}>
-							<TabPanel
-								className="my-tab-panel"
-								activeClass="active-tab"
-								tabs={BREAKPOINT_TABS(breakpoints)}
-							>
-								{(tab) => {
-									const desktopControls = new spacingControls(
-										setAttributes,
-										breakpoints,
-										"desktop"
-									);
-									const tabletControls = new spacingControls(
-										setAttributes,
-										breakpoints,
-										"tablet"
-									);
-									const mobileControls = new spacingControls(
-										setAttributes,
-										breakpoints,
-										"mobile"
-									);
-									if (tab.name == "desktop") {
-										return desktopControls;
-									} else if (tab.name == "tablet") {
-										return tabletControls;
-									} else if (tab.name == "mobile") {
-										return mobileControls;
-									}
-								}}
-							</TabPanel>
-						</PanelBody>
-					</Panel>
+					<SpacingControlsPanel
+						breakpoints={breakpoints}
+						setAttributes={setAttributes}
+					/>
 					<Panel>
 						<PanelBody title="Layout" icon={more} initialOpen={false}>
 							<PanelRow>
@@ -125,44 +97,4 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 			</div>
 		</>
 	);
-}
-
-function injectStyles(id, breakpoints, alignColumn, alignContent) {
-	if (!breakpoints) return "";
-	let styles = ``;
-	Object.keys(breakpoints).forEach((key) => {
-		styles += `@media(min-width: ${breakpoints[key].width}){
-				.editor-styles-wrapper .wp-block .block-${id},
-				.block-${id} {
-					${
-						breakpoints[key].padding.top
-							? `padding: ${parseBoxControlValues(breakpoints[key].padding)};`
-							: ""
-					}
-					${
-						breakpoints[key].margin.top
-							? `margin: ${parseBoxControlValues(breakpoints[key].margin)};`
-							: ""
-					}
-					${alignColumn ? `align-self: ${alignColumn};` : ""}
-					${alignContent ? `justify-content: ${alignContent};` : ""}
-				}
-			}
-		`;
-	});
-
-	let stylesWithTag = `${styles}`;
-	return stylesWithTag;
-}
-
-function parseBoxControlValues(obj) {
-	let prevValue;
-	if (!obj) return "";
-	Object.keys(obj).forEach((key) => {
-		if (!prevValue) prevValue = obj[key];
-		if (prevValue != obj[key] || obj[key] == null) {
-			return "";
-		}
-	});
-	return `${obj.top} ${obj.right} ${obj.bottom} ${obj.left}`;
 }

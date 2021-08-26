@@ -15,12 +15,17 @@ import {
 	TabPanel,
 	TextControl,
 	SelectControl,
+	__experimentalBoxControl as BoxControl,
+	TextareaControl,
 } from "@wordpress/components";
 import { useState } from "@wordpress/element";
 import { more } from "@wordpress/icons";
 import { uploadMedia } from "@wordpress/media-utils";
 import classnames from "classnames";
 import "./editor.scss";
+import SpacingControlsPanel from "../../components/SpacingControlsPanel";
+import BorderControlsPanel from "../../components/BorderControlsPanel";
+import PositionControlsPanel from "../../components/PositionControlsPanel";
 import editorLabel from "../../@lib/editorLabel";
 import injectStyles from "../../@lib/injectStyles";
 import updateBreakpoints from "../../@lib/updateBreakpoints";
@@ -35,6 +40,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		containerClass,
 		maxWidth,
 		fullWidth,
+		customCSS,
 	} = attributes;
 
 	// allows for styling in save function
@@ -73,73 +79,12 @@ function inspectorControls(breakpoints, setAttributes, attributes) {
 	return (
 		<>
 			<InspectorControls key="setting">
-				<Panel>
-					<PanelBody title="Spacing" icon={more} initialOpen={false}>
-						<TabPanel
-							className="my-tab-panel"
-							activeClass="active-tab"
-							tabs={BREAKPOINT_TABS(breakpoints)}
-							initialTabName="desktop"
-						>
-							{(tab) => {
-								const desktopControls = new spacingControls(
-									setAttributes,
-									breakpoints,
-									"desktop"
-								);
-								const laptopControls = new spacingControls(
-									setAttributes,
-									breakpoints,
-									"laptop"
-								);
-								const tabletControls = new spacingControls(
-									setAttributes,
-									breakpoints,
-									"tablet"
-								);
-								const mobileControls = new spacingControls(
-									setAttributes,
-									breakpoints,
-									"mobile"
-								);
-								if (tab.name == "desktop") {
-									return desktopControls;
-								} else if (tab.name == "laptop") {
-									return laptopControls;
-								} else if (tab.name == "tablet") {
-									return tabletControls;
-								} else if (tab.name == "mobile") {
-									return mobileControls;
-								}
-							}}
-						</TabPanel>
-					</PanelBody>
-				</Panel>
+				<SpacingControlsPanel
+					breakpoints={breakpoints}
+					setAttributes={setAttributes}
+				/>
 				<Panel>
 					<PanelBody title="Layout" icon={more} initialOpen={false}>
-						<PanelRow>
-							<SelectControl
-								labelPosition="top"
-								label={__("Display")}
-								options={[
-									{ label: "default", value: "" },
-									{ label: "block", value: "block" },
-									{ label: "inline-block", value: "inline-block" },
-									{ label: "flex", value: "flex" },
-									{ label: "inline-flex", value: "inline-flex" },
-									{ label: "none", value: "none" },
-								]}
-								value={attributes.breakpoints.desktop.display}
-								onChange={(value) =>
-									setAttributes({
-										breakpoints: {
-											...breakpoints,
-											desktop: { ...breakpoints.desktop, display: value },
-										},
-									})
-								}
-							/>
-						</PanelRow>
 						<PanelRow>
 							<ToggleControl
 								label="Full Width"
@@ -152,39 +97,140 @@ function inspectorControls(breakpoints, setAttributes, attributes) {
 								}}
 							/>
 						</PanelRow>
-						<PanelRow>
-							<UnitControl
-								label="Container Max Width"
-								value={attributes.maxWidth}
-								onChange={(value) => {
-									setAttributes({
-										maxWidth: value,
-									});
-								}}
-							/>
-							<Button
-								isSmall={true}
-								isSecondary={true}
-								onClick={() => setAttributes({ maxWidth: null })}
-							>
-								Reset
-							</Button>
-						</PanelRow>
-						<PanelRow>
-							<TextControl
-								label="Inner container class(es)"
-								help="Separate multiple classes with spaces."
-								value={attributes.containerClass}
-								onChange={(value) =>
-									setAttributes({
-										containerClass: value,
-									})
+						<LayoutControls
+							attributes={attributes}
+							setAttributes={setAttributes}
+						/>
+						<TabPanel
+							className="my-tab-panel"
+							activeClass="active-tab"
+							tabs={BREAKPOINT_TABS(breakpoints)}
+							initialTabName="desktop"
+						>
+							{(tab) => {
+								if (tab.name == "desktop") {
+									return (
+										<LayoutControlsTwo
+											breakpoints={breakpoints}
+											updateBreakpoints={updateBreakpoints}
+											device="desktop"
+										/>
+									);
+								} else if (tab.name == "laptop") {
+									return (
+										<LayoutControlsTwo
+											breakpoints={breakpoints}
+											updateBreakpoints={updateBreakpoints}
+											device="laptop"
+										/>
+									);
+								} else if (tab.name == "tablet") {
+									return (
+										<LayoutControlsTwo
+											breakpoints={breakpoints}
+											updateBreakpoints={updateBreakpoints}
+											device="tablet"
+										/>
+									);
+								} else if (tab.name == "mobile") {
+									return (
+										<LayoutControlsTwo
+											breakpoints={breakpoints}
+											updateBreakpoints={updateBreakpoints}
+											device="mobile"
+										/>
+									);
 								}
-							/>
-						</PanelRow>
+							}}
+						</TabPanel>
+					</PanelBody>
+				</Panel>
+				<BorderControlsPanel
+					setAttributes={setAttributes}
+					breakpoints={breakpoints}
+				/>
+				<PositionControlsPanel
+					setAttributes={setAttributes}
+					breakpoints={breakpoints}
+				/>
+				<Panel>
+					<PanelBody title="Custom CSS" icon={more} initialOpen={false}>
+						<TextareaControl
+							help="Use selector to refer to the parent element. Example: selector {property: vlaue}"
+							value={attributes.customCSS}
+							onChange={(value) => setAttributes({ customCSS: value })}
+						/>
 					</PanelBody>
 				</Panel>
 			</InspectorControls>
+		</>
+	);
+}
+
+function LayoutControls({ setAttributes, attributes }) {
+	return (
+		<>
+			<PanelRow>
+				<UnitControl
+					label="Container Max Width"
+					value={attributes.maxWidth}
+					onChange={(value) => {
+						setAttributes({
+							maxWidth: value,
+						});
+					}}
+				/>
+				<Button
+					isSmall={true}
+					isSecondary={true}
+					onClick={() => setAttributes({ maxWidth: null })}
+				>
+					Reset
+				</Button>
+			</PanelRow>
+			<PanelRow>
+				<TextControl
+					label="Inner container class(es)"
+					help="Separate multiple classes with spaces."
+					value={attributes.containerClass}
+					onChange={(value) =>
+						setAttributes({
+							containerClass: value,
+						})
+					}
+				/>
+			</PanelRow>
+		</>
+	);
+}
+
+function LayoutControlsTwo({ breakpoints, updateBreakpoints, device }) {
+	return (
+		<>
+			<PanelRow>
+				<SelectControl
+					labelPosition="top"
+					label={__("Display")}
+					options={[
+						{ label: "default", value: "" },
+						{ label: "block", value: "block" },
+						{ label: "inline-block", value: "inline-block" },
+						{ label: "flex", value: "flex" },
+						{ label: "inline-flex", value: "inline-flex" },
+						{ label: "none", value: "none" },
+					]}
+					value={breakpoints[device].display}
+					onChange={(value) =>
+						updateBreakpoints(
+							setAttributes,
+							breakpoints,
+							device,
+							"display",
+							value
+						)
+					}
+				/>
+			</PanelRow>
 		</>
 	);
 }

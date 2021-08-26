@@ -21,12 +21,12 @@ import {
 import { useEffect } from "@wordpress/element";
 import { more } from "@wordpress/icons";
 import "./editor.scss";
+import SpacingControlsPanel from "../../components/SpacingControlsPanel";
 import editorLabel from "../../@lib/editorLabel";
 import getBlockChildren from "../../@lib/getBlockChildren";
 import getBlockInfo from "../../@lib/getBlockInfo";
 import injectStyles from "../../@lib/injectStyles";
 import updateBreakpoints from "../../@lib/updateBreakpoints";
-import spacingControls from "../../@lib/spacingControls";
 import BREAKPOINT_TABS from "../../@lib/breakpointTabs";
 
 const ALLOWED_BLOCKS = ["altblocks/column"];
@@ -77,48 +77,10 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 function inspectorControls(breakpoints, setAttributes) {
 	return (
 		<InspectorControls key="grid-settings">
-			<Panel>
-				<PanelBody title="Spacing" icon={more} initialOpen={false}>
-					<TabPanel
-						className="my-tab-panel"
-						activeClass="active-tab"
-						tabs={BREAKPOINT_TABS(breakpoints)}
-						initialTabName="desktop"
-					>
-						{(tab) => {
-							const desktopControls = new spacingControls(
-								setAttributes,
-								breakpoints,
-								"desktop"
-							);
-							const laptopControls = new spacingControls(
-								setAttributes,
-								breakpoints,
-								"laptop"
-							);
-							const tabletControls = new spacingControls(
-								setAttributes,
-								breakpoints,
-								"tablet"
-							);
-							const mobileControls = new spacingControls(
-								setAttributes,
-								breakpoints,
-								"mobile"
-							);
-							if (tab.name == "desktop") {
-								return desktopControls;
-							} else if (tab.name == "laptop") {
-								return laptopControls;
-							} else if (tab.name == "tablet") {
-								return tabletControls;
-							} else if (tab.name == "mobile") {
-								return mobileControls;
-							}
-						}}
-					</TabPanel>
-				</PanelBody>
-			</Panel>
+			<SpacingControlsPanel
+				breakpoints={breakpoints}
+				setAttributes={setAttributes}
+			/>
 			<Panel>
 				<PanelBody title="Grid Settings" icon={more} initialOpen={false}>
 					<TabPanel

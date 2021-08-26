@@ -40,7 +40,7 @@ export default function injectStyles(id, breakpoints = {}) {
 }
 
 export function getValue(breakpoints, value, key) {
-	if (value == "padding" || value == "margin") {
+	if (value == "padding" || value == "margin" || value == "borderWidth") {
 		return parseBoxControlValues(breakpoints[key][value]);
 	}
 	return breakpoints[key][value];
