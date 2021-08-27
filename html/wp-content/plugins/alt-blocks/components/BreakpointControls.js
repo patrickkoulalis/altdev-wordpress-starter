@@ -1,51 +1,45 @@
 import React from "react";
+import {
+	Panel,
+	PanelBody,
+	PanelRow,
+	TextControl,
+	__experimentalUnitControl as UnitControl,
+} from "@wordpress/components";
+import { more } from "@wordpress/icons";
+import updateMeta from "../@lib/updateMeta";
 
-function BreakpointControls({ breakpoints, setAttributes,  }) {
+function BreakpointControls({ breakpoints, setAttributes }) {
 	return (
-		<>
-			<TextControl
-				label="Laptop"
-				value={breakpoints.desktop.width}
-				help="Default: 1280px"
-				onChange={(value) =>
-					updateBreakpoints(
-						setAttributes,
-						breakpoints,
-						"laptop",
-						"width",
-						value
-					)
-				}
-			/>
-			<TextControl
-				label="Tablet"
-				value={breakpoints.tablet.width}
-				help="Default: 1024px"
-				onChange={(value) =>
-					updateBreakpoints(
-						setAttributes,
-						breakpoints,
-						"tablet",
-						"width",
-						value
-					)
-				}
-			/>
-			<TextControl
-				label="Mobile"
-				value={breakpoints.mobile.width}
-				help="Default: 425px"
-				onChange={(value) =>
-					updateBreakpoints(
-						setAttributes,
-						breakpoints,
-						"mobile",
-						"width",
-						value
-					)
-				}
-			/>
-		</>
+		<Panel>
+			<PanelBody title="Breakpoints" icon={more} initialOpen={false}>
+				<PanelRow>
+					<UnitControl
+						label="Laptop"
+						value={breakpoints.laptop.meta.width}
+						help="Default: 1280px"
+						onChange={(value) =>
+							updateMeta(setAttributes, breakpoints, "laptop", "width", value)
+						}
+					/>
+					<UnitControl
+						label="Tablet"
+						value={breakpoints.tablet.meta.width}
+						onChange={(value) =>
+							updateMeta(setAttributes, breakpoints, "tablet", "width", value)
+						}
+					/>
+					<UnitControl
+						label="Mobile"
+						value={breakpoints.mobile.meta.width}
+						help="Default: 425px"
+						onChange={(value) =>
+							updateMeta(setAttributes, breakpoints, "mobile", "width", value)
+						}
+					/>
+				</PanelRow>
+			</PanelBody>
+		</Panel>
 	);
 }
 

@@ -1,5 +1,11 @@
-import { Panel, PanelBody, PanelRow, TabPanel } from "@wordpress/components";
-import spacingControls from "../@lib/spacingControls";
+import {
+	Panel,
+	PanelBody,
+	PanelRow,
+	TabPanel,
+	__experimentalBoxControl as BoxControl,
+} from "@wordpress/components";
+import updateBreakpoints from "../@lib/updateBreakpoints";
 import { more } from "@wordpress/icons";
 import BREAKPOINT_TABS from "../@lib/breakpointTabs";
 
@@ -14,39 +20,80 @@ function SpacingControlsPanel({ setAttributes, breakpoints }) {
 					initialTabName="desktop"
 				>
 					{(tab) => {
-						const desktopControls = new spacingControls(
-							setAttributes,
-							breakpoints,
-							"desktop"
-						);
-						const laptopControls = new spacingControls(
-							setAttributes,
-							breakpoints,
-							"laptop"
-						);
-						const tabletControls = new spacingControls(
-							setAttributes,
-							breakpoints,
-							"tablet"
-						);
-						const mobileControls = new spacingControls(
-							setAttributes,
-							breakpoints,
-							"mobile"
-						);
 						if (tab.name == "desktop") {
-							return desktopControls;
+							return (
+								<SpacingControls
+									setAttributes={setAttributes}
+									breakpoints={breakpoints}
+									device="desktop"
+								/>
+							);
 						} else if (tab.name == "laptop") {
-							return laptopControls;
+							return (
+								<SpacingControls
+									setAttributes={setAttributes}
+									breakpoints={breakpoints}
+									device="laptop"
+								/>
+							);
 						} else if (tab.name == "tablet") {
-							return tabletControls;
+							return (
+								<SpacingControls
+									setAttributes={setAttributes}
+									breakpoints={breakpoints}
+									device="tablet"
+								/>
+							);
 						} else if (tab.name == "mobile") {
-							return mobileControls;
+							return (
+								<SpacingControls
+									setAttributes={setAttributes}
+									breakpoints={breakpoints}
+									device="mobile"
+								/>
+							);
 						}
 					}}
 				</TabPanel>
 			</PanelBody>
 		</Panel>
+	);
+}
+
+function SpacingControls({ setAttributes, breakpoints, device }) {
+	return (
+		<>
+			<PanelRow>
+				<BoxControl
+					label="Padding"
+					values={breakpoints[device].padding}
+					onChange={(values) =>
+						updateBreakpoints(
+							setAttributes,
+							breakpoints,
+							device,
+							"padding",
+							values
+						)
+					}
+				/>
+			</PanelRow>
+			<PanelRow>
+				<BoxControl
+					label="Margin"
+					values={breakpoints[device].margin}
+					onChange={(values) =>
+						updateBreakpoints(
+							setAttributes,
+							breakpoints,
+							device,
+							"margin",
+							values
+						)
+					}
+				/>
+			</PanelRow>
+		</>
 	);
 }
 

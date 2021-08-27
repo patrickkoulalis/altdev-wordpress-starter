@@ -26,7 +26,7 @@ export default function injectStyles(id, breakpoints = {}) {
 			});
 			if (str) {
 				styles += `
-				@media(max-width: ${breakpoints[key].width}){
+				@media(max-width: ${breakpoints[key].meta.width}){
 					.editor-styles-wrapper .wp-block .block-${id},
 					.block-${id} {
 						${str}
@@ -40,7 +40,12 @@ export default function injectStyles(id, breakpoints = {}) {
 }
 
 export function getValue(breakpoints, value, key) {
-	if (value == "padding" || value == "margin" || value == "borderWidth") {
+	if (
+		value == "padding" ||
+		value == "margin" ||
+		value == "borderWidth" ||
+		value == "borderRadius"
+	) {
 		return parseBoxControlValues(breakpoints[key][value]);
 	}
 	return breakpoints[key][value];
@@ -55,7 +60,8 @@ export function makeCssRule(breakpoints, value, key) {
 		value == "name" ||
 		value == "width" ||
 		value == "icon" ||
-		value == "fullWidth"
+		value == "fullWidth" ||
+		value == "meta"
 	)
 		return ``;
 	if (!getValue(breakpoints, value, key)) return ``;

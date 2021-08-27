@@ -23,13 +23,16 @@ import classnames from "classnames";
  *
  * @return {WPElement} Element to render.
  */
+
+import GeneratedStyles from "../../components/GeneratedStyles";
+
 export default function save({ attributes }) {
 	const { id, generatedStyles } = attributes;
 	const blockClass = `block-${id}`;
 	return (
 		<>
 			<div {...useBlockProps.save({ className: classnames(blockClass) })}>
-				<style>{generatedStyles}</style>
+				<GeneratedStyles styles={generatedStyles} />
 				<InnerBlocks.Content />
 			</div>
 		</>

@@ -18,13 +18,18 @@
 			"source": "text",
 			"selector": "style"
 		},
+		"customCSS": {
+			"type": "string"
+		},
 		"breakpoints": {
 			"type": "object",
 			"default": {
 				"desktop": {
-					"name": "Desktop",
-					"icon": "desktop",
-					"width": "1440px",
+					"meta": {
+						"name": "Desktop",
+						"icon": "desktop",
+						"width": "1440px"
+					},
 					"gridGap": "",
 					"columns": 2,
 					"gridTemplateAreas": "",
@@ -46,9 +51,11 @@
 					}
 				},
 				"laptop": {
-					"name": "Laptop",
-					"icon": "laptop",
-					"width": "1280px",
+					"meta": {
+						"name": "Laptop",
+						"icon": "laptop",
+						"width": "1280px"
+					},
 					"gridGap": "",
 					"columns": 0,
 					"gridTemplateAreas": "",
@@ -70,9 +77,11 @@
 					}
 				},
 				"tablet": {
-					"name": "Tablet",
-					"icon": "tablet",
-					"width": "1024px",
+					"meta": {
+						"name": "Tablet",
+						"icon": "tablet",
+						"width": "1024px"
+					},
 					"gridGap": "",
 					"columns": 0,
 					"gridTemplateAreas": "",
@@ -94,9 +103,11 @@
 					}
 				},
 				"mobile": {
-					"name": "Mobile",
-					"icon": "smartphone",
-					"width": "425px",
+					"meta": {
+						"name": "Mobile",
+						"icon": "smartphone",
+						"width": "425px"
+					},
 					"gridGap": "",
 					"columns": 0,
 					"gridTemplateAreas": "",

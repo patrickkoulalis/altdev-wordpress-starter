@@ -21,11 +21,11 @@ import { useState, useEffect } from "@wordpress/element";
 import { more } from "@wordpress/icons";
 import "./editor.scss";
 import SpacingControlsPanel from "../../components/SpacingControlsPanel";
-import editorLabel from "../../@lib/editorLabel";
+import EditorLabel from "../../components/EditorLabel";
 import injectStyles from "../../@lib/injectStyles";
 import updateBreakpoints from "../../@lib/updateBreakpoints";
-import spacingControls from "../../@lib/spacingControls";
 import BREAKPOINT_TABS from "../../@lib/breakpointTabs";
+import GeneratedStyles from "../../components/GeneratedStyles";
 
 export default function Edit({ attributes, setAttributes, clientId }) {
 	const {
@@ -51,8 +51,8 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 	return (
 		<>
 			<div {...blockProps}>
-				{editorLabel(useBlockProps)}
-				<style>{generatedStyles}</style>
+				<EditorLabel useBlockProps={useBlockProps} />
+				<GeneratedStyles styles={generatedStyles} />
 				<InspectorControls key="setting">
 					<SpacingControlsPanel
 						breakpoints={breakpoints}

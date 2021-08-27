@@ -26,10 +26,12 @@ import "./editor.scss";
 import SpacingControlsPanel from "../../components/SpacingControlsPanel";
 import BorderControlsPanel from "../../components/BorderControlsPanel";
 import PositionControlsPanel from "../../components/PositionControlsPanel";
-import editorLabel from "../../@lib/editorLabel";
+import BreakpointControls from "../../components/BreakpointControls";
+import GeneratedStyles from "../../components/GeneratedStyles";
+import CustomCSSControlsPanel from "../../components/CustomCSSControlsPanel";
+import EditorLabel from "../../components/EditorLabel";
 import injectStyles from "../../@lib/injectStyles";
 import updateBreakpoints from "../../@lib/updateBreakpoints";
-import spacingControls from "../../@lib/spacingControls";
 import BREAKPOINT_TABS from "../../@lib/breakpointTabs";
 export default function Edit({ attributes, setAttributes, clientId }) {
 	const {
@@ -58,9 +60,13 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 	return (
 		<>
 			<section {...blockProps}>
-				{editorLabel(useBlockProps)}
-				{inspectorControls(breakpoints, setAttributes, attributes)}
-				<style>{generatedStyles}</style>
+				<EditorLabel useBlockProps={useBlockProps} />
+				<SectionInspectorControls
+					breakpoints={breakpoints}
+					setAttributes={setAttributes}
+					attributes={attributes}
+				/>
+				<GeneratedStyles styles={generatedStyles} />
 				{!fullWidth && (
 					<div
 						class={`ab-section-inner${containerClass && " " + containerClass}`}
@@ -75,7 +81,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 	);
 }
 
-function inspectorControls(breakpoints, setAttributes, attributes) {
+function SectionInspectorControls({ breakpoints, setAttributes, attributes }) {
 	return (
 		<>
 			<InspectorControls key="setting">
@@ -153,15 +159,14 @@ function inspectorControls(breakpoints, setAttributes, attributes) {
 					setAttributes={setAttributes}
 					breakpoints={breakpoints}
 				/>
-				<Panel>
-					<PanelBody title="Custom CSS" icon={more} initialOpen={false}>
-						<TextareaControl
-							help="Use selector to refer to the parent element. Example: selector {property: vlaue}"
-							value={attributes.customCSS}
-							onChange={(value) => setAttributes({ customCSS: value })}
-						/>
-					</PanelBody>
-				</Panel>
+				<CustomCSSControlsPanel
+					setAttributes={setAttributes}
+					attributes={attributes}
+				/>
+				<BreakpointControls
+					setAttributes={setAttributes}
+					breakpoints={breakpoints}
+				/>
 			</InspectorControls>
 		</>
 	);

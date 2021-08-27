@@ -22,6 +22,9 @@ import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
  *
  * @return {WPElement} Element to render.
  */
+
+import GeneratedStyles from "../../components/GeneratedStyles";
+
 export default function save({ attributes }) {
 	const PADDING = attributes.style?.spacing?.padding;
 	const STYLES = {
@@ -30,6 +33,7 @@ export default function save({ attributes }) {
 
 	return (
 		<div {...useBlockProps.save()}>
+			<GeneratedStyles styles={generatedStyles} />
 			<InnerBlocks.Content />
 		</div>
 	);

@@ -99,6 +99,39 @@ function PositionControls({ setAttributes, breakpoints, device }) {
 						updateBreakpoints(setAttributes, breakpoints, device, "top", value)
 					}
 				/>
+				<UnitControl
+					label="Right"
+					value={breakpoints[device].right}
+					onChange={(value) =>
+						updateBreakpoints(
+							setAttributes,
+							breakpoints,
+							device,
+							"right",
+							value
+						)
+					}
+				/>
+				<UnitControl
+					label="Bottom"
+					value={breakpoints[device].bottom}
+					onChange={(value) =>
+						updateBreakpoints(
+							setAttributes,
+							breakpoints,
+							device,
+							"bottom",
+							value
+						)
+					}
+				/>
+				<UnitControl
+					label="Left"
+					value={breakpoints[device].left}
+					onChange={(value) =>
+						updateBreakpoints(setAttributes, breakpoints, device, "left", value)
+					}
+				/>
 			</PanelRow>
 			<PanelRow>
 				<NumberControl

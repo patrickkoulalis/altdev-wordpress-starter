@@ -3,7 +3,8 @@ import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 import { useState } from "@wordpress/element";
 import { more } from "@wordpress/icons";
 import "./editor.scss";
-import editorLabel from "../../@lib/editorLabel";
+import EditorLabel from "../../components/EditorLabel";
+import GeneratedStyles from "../../components/GeneratedStyles";
 export default function Edit({ attributes, setAttributes }) {
 	const PADDING = attributes.style?.spacing?.padding;
 	const STYLES = {
@@ -13,7 +14,8 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<>
 			<div {...useBlockProps()}>
-				{editorLabel(useBlockProps)}
+				<EditorLabel useBlockProps={useBlockProps} />
+				<GeneratedStyles styles={generatedStyles} />
 				<InnerBlocks />
 			</div>
 		</>

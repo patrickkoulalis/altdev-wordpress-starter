@@ -42,9 +42,11 @@
 			"type": "object",
 			"default": {
 				"desktop": {
-					"name": "Desktop",
-					"icon": "desktop",
-					"width": "1440px",
+					"meta": {
+						"name": "Desktop",
+						"icon": "desktop",
+						"width": "1440px"
+					},
 					"minHeight": "",
 					"display": "",
 					"alignContent": "",
@@ -84,9 +86,11 @@
 					"zIndex": ""
 				},
 				"laptop": {
-					"name": "Laptop",
-					"icon": "laptop",
-					"width": "1280px",
+					"meta": {
+						"name": "Laptop",
+						"icon": "laptop",
+						"width": "1280px"
+					},
 					"minHeight": "",
 					"display": "",
 					"alignContent": "",
@@ -126,9 +130,11 @@
 					"zIndex": ""
 				},
 				"tablet": {
-					"name": "Tablet",
-					"icon": "tablet",
-					"width": "1024px",
+					"meta": {
+						"name": "Tablet",
+						"icon": "tablet",
+						"width": "1024px"
+					},
 					"minHeight": "",
 					"display": "",
 					"alignContent": "",
@@ -168,9 +174,11 @@
 					"zIndex": ""
 				},
 				"mobile": {
-					"name": "Mobile",
-					"icon": "smartphone",
-					"width": "425px",
+					"meta": {
+						"name": "Mobile",
+						"icon": "smartphone",
+						"width": "425px"
+					},
 					"minHeight": "",
 					"display": "",
 					"alignContent": "",

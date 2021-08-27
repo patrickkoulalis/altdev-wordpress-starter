@@ -22,9 +22,13 @@ import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
  *
  * @return {WPElement} Element to render.
  */
+
+import GeneratedStyles from "../../components/GeneratedStyles";
+
 export default function save({ attributes }) {
 	return (
 		<ul {...useBlockProps.save()}>
+			<GeneratedStyles styles={generatedStyles} />
 			<InnerBlocks.Content />
 		</ul>
 	);

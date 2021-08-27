@@ -15,14 +15,15 @@ import {
 import { useState } from "@wordpress/element";
 import { more } from "@wordpress/icons";
 import "./editor.scss";
-import editorLabel from "../../@lib/editorLabel";
+import EditorLabel from "../../components/EditorLabel";
+import GeneratedStyles from "../../components/GeneratedStyles";
 export default function Edit({ attributes, setAttributes }) {
 	const [isFullWidth, setIsFullWidth] = useState(attributes.fullwidth);
 	setAttributes({ fullwidth: isFullWidth });
 	return (
 		<>
 			<section {...useBlockProps()}>
-				{editorLabel(useBlockProps)}
+				<EditorLabel useBlockProps={useBlockProps} />
 				<InspectorControls key="setting">
 					<Panel>
 						<PanelBody title="Color" icon={more} initialOpen={true}>
@@ -54,6 +55,7 @@ export default function Edit({ attributes, setAttributes }) {
 						</PanelBody>
 					</Panel>
 				</InspectorControls>
+				<GeneratedStyles styles={generatedStyles} />
 				<InnerBlocks allowedBlocks={["altblocks/iconlistitem"]} />
 			</section>
 		</>

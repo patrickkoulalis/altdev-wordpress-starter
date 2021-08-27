@@ -72,21 +72,6 @@ function BorderControls({ setAttributes, breakpoints, device }) {
 	return (
 		<>
 			<PanelRow>
-				<BoxControl
-					label="Border Width"
-					values={breakpoints[device].borderWidth}
-					onChange={(values) =>
-						updateBreakpoints(
-							setAttributes,
-							breakpoints,
-							device,
-							"borderWidth",
-							values
-						)
-					}
-				/>
-			</PanelRow>
-			<PanelRow>
 				<SelectControl
 					label="Border Style"
 					value={breakpoints[device].borderStyle}
@@ -108,17 +93,49 @@ function BorderControls({ setAttributes, breakpoints, device }) {
 				/>
 			</PanelRow>
 			<PanelRow>
-				<ColorPalette
-					label="Border Color"
-					colors={colors}
-					value={breakpoints[device].borderColor}
-					onChange={(value) =>
+				<fieldset>
+					<label>Border Color</label>
+					<ColorPalette
+						colors={colors}
+						value={breakpoints[device].borderColor}
+						onChange={(value) =>
+							updateBreakpoints(
+								setAttributes,
+								breakpoints,
+								device,
+								"borderColor",
+								value
+							)
+						}
+					/>
+				</fieldset>
+			</PanelRow>
+			<PanelRow>
+				<BoxControl
+					label="Border Width"
+					values={breakpoints[device].borderWidth}
+					onChange={(values) =>
 						updateBreakpoints(
 							setAttributes,
 							breakpoints,
 							device,
-							"borderColor",
-							value
+							"borderWidth",
+							values
+						)
+					}
+				/>
+			</PanelRow>
+			<PanelRow>
+				<BoxControl
+					label="Border Radius"
+					values={breakpoints[device].borderRadius}
+					onChange={(values) =>
+						updateBreakpoints(
+							setAttributes,
+							breakpoints,
+							device,
+							"borderRadius",
+							values
 						)
 					}
 				/>

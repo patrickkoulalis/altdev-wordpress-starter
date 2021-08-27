@@ -20,7 +20,7 @@ import { useBlockProps } from "@wordpress/block-editor";
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import "./editor.scss";
-import editorLabel from "../../@lib/editorLabel";
+import EditorLabel from "../../components/EditorLabel";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -34,7 +34,7 @@ export default function Edit() {
 	return (
 		<>
 			<p {...useBlockProps()}>
-				{editorLabel(useBlockProps)}
+				<EditorLabel useBlockProps={useBlockProps} />
 				{__("ALTdev Block – hello from the editor!", "alt-blocksaaaaaaaaaaaaa")}
 			</p>
 		</>

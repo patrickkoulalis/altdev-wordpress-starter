@@ -22,7 +22,9 @@ import { useEffect } from "@wordpress/element";
 import { more } from "@wordpress/icons";
 import "./editor.scss";
 import SpacingControlsPanel from "../../components/SpacingControlsPanel";
-import editorLabel from "../../@lib/editorLabel";
+import BreakpointControls from "../../components/BreakpointControls";
+import EditorLabel from "../../components/EditorLabel";
+import GeneratedStyles from "../../components/GeneratedStyles";
 import getBlockChildren from "../../@lib/getBlockChildren";
 import getBlockInfo from "../../@lib/getBlockInfo";
 import injectStyles from "../../@lib/injectStyles";
@@ -66,15 +68,18 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 
 	return (
 		<>
-			{editorLabel(useBlockProps)}
-			{inspectorControls(breakpoints, setAttributes)}
-			<style>{generatedStyles}</style>
+			<EditorLabel useBlockProps={useBlockProps} />
+			<GridInspectorControls
+				breakpoints={breakpoints}
+				setAttributes={setAttributes}
+			/>
+			<GeneratedStyles styles={generatedStyles} />
 			<div {...innerBlocksProps} />
 		</>
 	);
 }
 
-function inspectorControls(breakpoints, setAttributes) {
+function GridInspectorControls({ breakpoints, setAttributes }) {
 	return (
 		<InspectorControls key="grid-settings">
 			<SpacingControlsPanel
@@ -123,54 +128,10 @@ function inspectorControls(breakpoints, setAttributes) {
 					</TabPanel>
 				</PanelBody>
 			</Panel>
-			<Panel>
-				<PanelBody title="Breakpoints" icon={more} initialOpen={false}>
-					<PanelRow>
-						<TextControl
-							label="Laptop"
-							value={breakpoints.desktop.width}
-							help="Default: 1280px"
-							onChange={(value) =>
-								updateBreakpoints(
-									setAttributes,
-									breakpoints,
-									"laptop",
-									"width",
-									value
-								)
-							}
-						/>
-						<TextControl
-							label="Tablet"
-							value={breakpoints.tablet.width}
-							help="Default: 1024px"
-							onChange={(value) =>
-								updateBreakpoints(
-									setAttributes,
-									breakpoints,
-									"tablet",
-									"width",
-									value
-								)
-							}
-						/>
-						<TextControl
-							label="Mobile"
-							value={breakpoints.mobile.width}
-							help="Default: 425px"
-							onChange={(value) =>
-								updateBreakpoints(
-									setAttributes,
-									breakpoints,
-									"mobile",
-									"width",
-									value
-								)
-							}
-						/>
-					</PanelRow>
-				</PanelBody>
-			</Panel>
+			<BreakpointControls
+				setAttributes={setAttributes}
+				breakpoints={breakpoints}
+			/>
 		</InspectorControls>
 	);
 }

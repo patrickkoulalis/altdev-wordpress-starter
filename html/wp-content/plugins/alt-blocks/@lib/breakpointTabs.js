@@ -5,7 +5,7 @@ export default function (breakpoints) {
 	Object.keys(breakpoints).forEach((key) => {
 		arr.push({
 			name: key,
-			title: <Dashicon icon={breakpoints[key].icon} />,
+			title: <Dashicon icon={breakpoints[key].meta.icon} />,
 			className: `tab-${key}`,
 		});
 	});

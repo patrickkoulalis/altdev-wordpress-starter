@@ -20,6 +20,9 @@ import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
  *
  * @return {WPElement} Element to render.
  */
+
+import GeneratedStyles from "../../components/GeneratedStyles";
+
 export default function save({ attributes }) {
 	const { generatedStyles, fullWidth, maxWidth, containerClass } = attributes;
 
@@ -29,7 +32,7 @@ export default function save({ attributes }) {
 				className: `block-${attributes.id}`,
 			})}
 		>
-			<style>{generatedStyles}</style>
+			<GeneratedStyles styles={generatedStyles} />
 			{!fullWidth && (
 				<div
 					class={`ab-section-inner${containerClass && " " + containerClass}`}

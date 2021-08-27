@@ -22,6 +22,9 @@ import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
  *
  * @return {WPElement} Element to render.
  */
+
+import GeneratedStyles from "../../components/GeneratedStyles";
+
 export default function save({ attributes, clientId }) {
 	const { breakpoints, generatedStyles } = attributes;
 
@@ -32,7 +35,7 @@ export default function save({ attributes, clientId }) {
 					className: `block-${attributes.id}`,
 				})}
 			>
-				<style>{generatedStyles}</style>
+				<GeneratedStyles styles={generatedStyles} />
 				<InnerBlocks.Content />
 			</div>
 		</>
