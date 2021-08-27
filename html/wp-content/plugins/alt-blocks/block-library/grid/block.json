@@ -37,6 +37,15 @@
 					"gridTemplateRows": "auto",
 					"autoFill": false,
 					"autoFit": false,
+					"minHeight": "",
+					"display": "",
+					"alignContent": "",
+					"justifyContent": "",
+					"flexDirection": "",
+					"borderColor": "",
+					"borderStyle": "",
+					"borderWidth": "",
+					"borderRadius": "",
 					"padding": {
 						"top": "",
 						"left": "",
@@ -48,7 +57,15 @@
 						"left": "",
 						"right": "",
 						"bottom": ""
-					}
+					},
+					"overflow": "",
+					"position": "",
+					"top": "",
+					"right": "",
+					"bottom": "",
+					"left": "",
+					"visibility": "",
+					"zIndex": ""
 				},
 				"laptop": {
 					"meta": {
@@ -63,6 +80,15 @@
 					"gridTemplateRows": "",
 					"autoFill": false,
 					"autoFit": false,
+					"minHeight": "",
+					"display": "",
+					"alignContent": "",
+					"justifyContent": "",
+					"flexDirection": "",
+					"borderColor": "",
+					"borderStyle": "",
+					"borderWidth": "",
+					"borderRadius": "",
 					"padding": {
 						"top": "",
 						"left": "",
@@ -74,7 +100,15 @@
 						"left": "",
 						"right": "",
 						"bottom": ""
-					}
+					},
+					"overflow": "",
+					"position": "",
+					"top": "",
+					"right": "",
+					"bottom": "",
+					"left": "",
+					"visibility": "",
+					"zIndex": ""
 				},
 				"tablet": {
 					"meta": {
@@ -89,6 +123,15 @@
 					"gridTemplateRows": "",
 					"autoFill": false,
 					"autoFit": false,
+					"minHeight": "",
+					"display": "",
+					"alignContent": "",
+					"justifyContent": "",
+					"flexDirection": "",
+					"borderColor": "",
+					"borderStyle": "",
+					"borderWidth": "",
+					"borderRadius": "",
 					"padding": {
 						"top": "",
 						"left": "",
@@ -100,7 +143,15 @@
 						"left": "",
 						"right": "",
 						"bottom": ""
-					}
+					},
+					"overflow": "",
+					"position": "",
+					"top": "",
+					"right": "",
+					"bottom": "",
+					"left": "",
+					"visibility": "",
+					"zIndex": ""
 				},
 				"mobile": {
 					"meta": {
@@ -115,6 +166,15 @@
 					"gridTemplateRows": "",
 					"autoFill": false,
 					"autoFit": false,
+					"minHeight": "",
+					"display": "",
+					"alignContent": "",
+					"justifyContent": "",
+					"flexDirection": "",
+					"borderColor": "",
+					"borderStyle": "",
+					"borderWidth": "",
+					"borderRadius": "",
 					"padding": {
 						"top": "",
 						"left": "",
@@ -126,7 +186,15 @@
 						"left": "",
 						"right": "",
 						"bottom": ""
-					}
+					},
+					"overflow": "",
+					"position": "",
+					"top": "",
+					"right": "",
+					"bottom": "",
+					"left": "",
+					"visibility": "",
+					"zIndex": ""
 				}
 			}
 		}

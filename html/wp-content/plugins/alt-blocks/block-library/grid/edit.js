@@ -22,7 +22,10 @@ import { useEffect } from "@wordpress/element";
 import { more } from "@wordpress/icons";
 import "./editor.scss";
 import SpacingControlsPanel from "../../components/SpacingControlsPanel";
+import BorderControlsPanel from "../../components/BorderControlsPanel";
+import PositionControlsPanel from "../../components/PositionControlsPanel";
 import BreakpointControls from "../../components/BreakpointControls";
+import CustomCSSControlsPanel from "../../components/CustomCSSControlsPanel";
 import EditorLabel from "../../components/EditorLabel";
 import GeneratedStyles from "../../components/GeneratedStyles";
 import getBlockChildren from "../../@lib/getBlockChildren";
@@ -69,10 +72,32 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 	return (
 		<>
 			<EditorLabel useBlockProps={useBlockProps} />
-			<GridInspectorControls
-				breakpoints={breakpoints}
-				setAttributes={setAttributes}
-			/>
+			<InspectorControls key="grid-settings">
+				<SpacingControlsPanel
+					breakpoints={breakpoints}
+					setAttributes={setAttributes}
+				/>
+				<BorderControlsPanel
+					setAttributes={setAttributes}
+					breakpoints={breakpoints}
+				/>
+				<PositionControlsPanel
+					setAttributes={setAttributes}
+					breakpoints={breakpoints}
+				/>
+				<CustomCSSControlsPanel
+					setAttributes={setAttributes}
+					attributes={attributes}
+				/>
+				<BreakpointControls
+					setAttributes={setAttributes}
+					breakpoints={breakpoints}
+				/>
+				<GridInspectorControls
+					breakpoints={breakpoints}
+					setAttributes={setAttributes}
+				/>
+			</InspectorControls>
 			<GeneratedStyles styles={generatedStyles} />
 			<div {...innerBlocksProps} />
 		</>
@@ -81,11 +106,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 
 function GridInspectorControls({ breakpoints, setAttributes }) {
 	return (
-		<InspectorControls key="grid-settings">
-			<SpacingControlsPanel
-				breakpoints={breakpoints}
-				setAttributes={setAttributes}
-			/>
+		<>
 			<Panel>
 				<PanelBody title="Grid Settings" icon={more} initialOpen={false}>
 					<TabPanel
@@ -128,11 +149,7 @@ function GridInspectorControls({ breakpoints, setAttributes }) {
 					</TabPanel>
 				</PanelBody>
 			</Panel>
-			<BreakpointControls
-				setAttributes={setAttributes}
-				breakpoints={breakpoints}
-			/>
-		</InspectorControls>
+		</>
 	);
 }
 

@@ -27,8 +27,8 @@ import SpacingControlsPanel from "../../components/SpacingControlsPanel";
 import BorderControlsPanel from "../../components/BorderControlsPanel";
 import PositionControlsPanel from "../../components/PositionControlsPanel";
 import BreakpointControls from "../../components/BreakpointControls";
-import GeneratedStyles from "../../components/GeneratedStyles";
 import CustomCSSControlsPanel from "../../components/CustomCSSControlsPanel";
+import GeneratedStyles from "../../components/GeneratedStyles";
 import EditorLabel from "../../components/EditorLabel";
 import injectStyles from "../../@lib/injectStyles";
 import updateBreakpoints from "../../@lib/updateBreakpoints";
@@ -103,10 +103,12 @@ function SectionInspectorControls({ breakpoints, setAttributes, attributes }) {
 								}}
 							/>
 						</PanelRow>
-						<LayoutControls
-							attributes={attributes}
-							setAttributes={setAttributes}
-						/>
+						{!attributes.fullWidth && (
+							<LayoutControls
+								attributes={attributes}
+								setAttributes={setAttributes}
+							/>
+						)}
 						<TabPanel
 							className="my-tab-panel"
 							activeClass="active-tab"
